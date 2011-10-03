@@ -1,10 +1,12 @@
 # irrelevant
 
-Irrelevant is an old-school gamepad emulator for Android phones. It allows you to use your Android phone as a basic input device for computer games, and it comes pre-packed with a handful of familiar console controller skins.
+Note: **NOT FUNCTIONAL YET**
 
-The keymappings are configurable, and if you can code a bit, you can define your own controllers!
+Irrelevant is an old-school gamepad emulator for Android phones. It allows you to use your Android phone as a basic input device for computer games.
 
-## changelog
+This is a combination of java server for your computer and an android app. If you're looking for a non-technical solution, this isn't it. 
+
+The keymappings are configurable, and if you can code a bit, you can define your own controllers pretty easily.
 
 ## roadmap
 
