@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Irrelevant" default="all" basedir=".">
+
+  <property name="src" location="src" />
+  <property name="build" location="build" />
+  <property name="bin" location="bin" />
+
+  <property name="jarname" value="${ant.project.name}" />
+
+  <target name="all" depends="clean, build, jar">
+  </target>
+
+  <target name="clean">
+    <delete dir="${build}" />
+    <delete dir="${bin}" />
+
+    <mkdir dir="${build}" />
+    <mkdir dir="${bin}" />
+  </target>
+
+
+  <target name="build">
+    <javac srcdir="${src}"
+	   destdir="${build}" />
+  </target>
+
+  <target name="run">
+    <java classname="com.drfloob.irrelevant.POC">
+      <classpath>
+	<pathelement location="${bin}/${jarname}.jar" />
+      </classpath>
+    </java>
+  </target>
+
+  <target name="jar">
+    <jar destfile="${bin}/${jarname}.jar"
+	 basedir="${build}" />
+  </target>
+
+</project>
