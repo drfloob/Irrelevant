@@ -10,8 +10,8 @@ Gamepads are pluggable. Defining your own gamepad is documented and straightforw
 
 ## design documents
 
- * [API](API.md): general list of all server api calls, organized by responsibility
- * [GAMEPAD](GAMEPAD.md): general requirements for gamepad packages
+ * [API](Irrelevant/blob/master/API.md): general list of all server api calls, organized by responsibility
+ * [GAMEPAD](Irrelevant/blob/master/GAMEPAD.md): general requirements for gamepad packages
 
 ## license
 
