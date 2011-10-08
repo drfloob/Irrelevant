@@ -2,15 +2,16 @@
 
 Note: **NOT FUNCTIONAL YET**
 
-Irrelevant is an old-school gamepad emulator for Android phones. It allows you to use your Android phone as a basic input device for computer games.
+Irrelevant is a gamepad emulator for Android phones. It allows you to use your multi-touch Android device as a simple input device for your computer, built primarily for old-school gamers (and their emulators).
 
-This is a combination of java server for your computer and an android app. If you're looking for a non-technical solution, this isn't it. 
+This is a combination of java server for your computer and an android client for android devices. Setup requires some technical ability. The server should work on most operating systems, since it's entirely written in Java using standard Java tools (nothing fancy or OS-specific).
 
-The keymappings are configurable, and if you can code a bit, you can define your own controllers pretty easily.
+Gamepads are pluggable. Defining your own gamepad is documented and straightforward (requires some graphics skills and some light programming). The server-side keymappings are configurable, and client-side button choices are configurable as well. New devices can download gamepads from any irrelevant server they connect to, allowing anyone with the app to play.
 
-## roadmap
+## design documents
 
- * proof of concept using java.awt.Robot
+ * [API](API.md): general list of all server api calls, organized by responsibility
+ * [GAMEPAD](GAMEPAD.md): general requirements for gamepad packages
 
 ## license
 
