@@ -4,8 +4,20 @@
   <property name="src" location="src" />
   <property name="build" location="build" />
   <property name="bin" location="bin" />
+  <property name="lib" location="lib" />
 
   <property name="jarname" value="${ant.project.name}" />
+
+  <path id="cp.lib">
+    <fileset dir="${lib}">
+      <include name="*.jar" />
+    </fileset>
+  </path>
+
+  <path id="cp.run">
+    <pathelement location="${bin}\${jarname}.jar" />
+    <path refid="cp.lib" />
+  </path>
 
   <target name="all" depends="clean, build, jar">
   </target>
@@ -21,15 +33,8 @@
 
   <target name="build">
     <javac srcdir="${src}"
-	   destdir="${build}" />
-  </target>
-
-  <target name="run">
-    <java classname="com.drfloob.irrelevant.POC">
-      <classpath>
-	<pathelement location="${bin}/${jarname}.jar" />
-      </classpath>
-    </java>
+	   destdir="${build}" 
+	   classpathref="cp.lib" />
   </target>
 
   <target name="jar">
@@ -37,6 +42,13 @@
 	 basedir="${build}" />
   </target>
 
+  <target name="run">
+    <java classname="com.drfloob.irrelevant.JettyTest"
+	  classpathref="cp.run">
+    </java>
+  </target>
+
+  
 </project>
 
 
