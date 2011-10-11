@@ -16,36 +16,38 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
 public class ServletServer {
+
+	private static ControllerRegistry cr = new ControllerRegistry();
+
 	public static void main(String[] args) throws Exception {
 		Server server = new Server(8080);
 	        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
 		context.setContextPath("/");
 		server.setHandler(context);
  
-		context.addServlet(new ServletHolder(new HelloServlet("Buongiorno Mondo")),"/it/*");
-		context.addServlet(new ServletHolder(new HelloServlet("Bonjour le Monde")),"/fr/*");
-		context.addServlet(new ServletHolder(new HelloServlet()),"/*");
+		context.addServlet(new ServletHolder(new ControllerServlet()),"/*");
  
 		server.start();
 		server.join();	
 	}
 
-	private static class HelloServlet extends HttpServlet {
-		private String greeting="Hello World";
-
-		public HelloServlet(){}
-		public HelloServlet(String greeting)
-		{
-			this.greeting=greeting;
+	private static class ControllerServlet extends HttpServlet {
+		public ControllerServlet() throws Exception {
 		}
 
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException
 		{
-			response.setContentType("text/html");
+
 			response.setStatus(HttpServletResponse.SC_OK);
-			response.getWriter().println("<h1>"+greeting+"</h1>");
-			response.getWriter().println("session=" + request.getSession(true).getId());
+			String id = request.getSession(true).getId();
+			
+			try {
+				cr.dispatch(id, request.getPathInfo());
+			} catch (Exception e) {
+				System.err.println(e.getMessage());
+				response.getWriter().println(e.getMessage());
+			}
 		}
 	}
 }
