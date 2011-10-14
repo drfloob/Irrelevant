@@ -4,9 +4,12 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.awt.AWTException;
 
+import java.util.logging.Logger;
+
 public class Controller {
 
 	private Robot rob;
+	private static Logger log = Logger.getLogger(Controller.class.getName());
 
 	public Controller() throws AWTException {
 		rob = new Robot();
@@ -44,7 +47,6 @@ public class Controller {
 		} else {
 			throw new Exception("bad button: "+button);
 		}
-
-		System.out.println(button+" pressed");
+		log.info(button + " pressed");
 	}
 }

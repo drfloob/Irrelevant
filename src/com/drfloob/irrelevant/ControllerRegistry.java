@@ -6,10 +6,13 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import java.util.logging.Logger;
+
 public class ControllerRegistry {
 	
 	private HashMap<String, Controller> registrants = new HashMap<String, Controller>();;
 	private ArrayList<Controller> controllers = new ArrayList<Controller>();
+	private static Logger log = Logger.getLogger(ControllerRegistry.class.getName());
 
 	public ControllerRegistry() {
 		try {
@@ -49,10 +52,12 @@ public class ControllerRegistry {
 
 	public void dispatch(String id, String request) throws Exception {
 		if (request.equals("/register")) {
+			log.info("registering new controller to id: "+id);
 			registerNext(id);
 			return;
 		}
 		if (request.equals("/unregister")) {
+			log.info("unregistering id: "+id);
 			unregister(id);
 			return;
 		}

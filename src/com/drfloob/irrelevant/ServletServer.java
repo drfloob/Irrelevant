@@ -15,9 +15,12 @@ import org.eclipse.jetty.server.handler.AbstractHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
+import java.util.logging.Logger;
+
 public class ServletServer {
 
 	private static ControllerRegistry cr = new ControllerRegistry();
+	private static Logger log = Logger.getLogger(ServletServer.class.getName());
 
 	public static void main(String[] args) throws Exception {
 		Server server = new Server(8080);
@@ -41,6 +44,7 @@ public class ServletServer {
 
 			response.setStatus(HttpServletResponse.SC_OK);
 			String id = request.getSession(true).getId();
+			log.info("DEBUG: path: " + request.getPathInfo());
 			
 			try {
 				cr.dispatch(id, request.getPathInfo());
